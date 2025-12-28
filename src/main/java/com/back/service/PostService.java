@@ -20,10 +20,13 @@ public class PostService {
     public Post write(Member author, String title, String content) {
         Post post = new Post(author, title, content);
 
+        author.increaseActivityScore(3);
+
         return postRepository.save(post);
     }
 
     public Optional<Post> findById(int id) {
         return postRepository.findById(id);
     }
+
 }
